@@ -67,48 +67,36 @@
 
                     <!-- FORM PREVENTIVO -->
                     <div class="col">
-                        <form class="needs-validation fw-semibold" id="form_price" novalidate="">
+                        <form class="needs-validation fw-semibold" id="form_price">
                             <div class="row g-3">
 
                                 <!-- CAMPO NOME -->
                                 <div class="col-12">
                                     <label for="firstName" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="firstName" required="">
-                                    <div class="invalid-feedback">
-                                        Compila il campo Nome.
-                                    </div>
+                                    <input type="text" class="form-control" id="firstName" required>
                                 </div>
 
                                 <!-- CAMPO COGNOME -->
                                 <div class="col-12">
                                     <label for="lastName" class="form-label">Cognome</label>
-                                    <input type="text" class="form-control" id="lastName" required="">
-                                    <div class="invalid-feedback">
-                                        Compila il campo Cognome.
-                                    </div>
+                                    <input type="text" class="form-control" id="lastName" required>
                                 </div>
 
                                 <!-- CAMPO EMAIL -->
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="">
-                                    <div class="invalid-feedback">
-                                        Inserisci un Email valida.
-                                    </div>
+                                    <input type="email" class="form-control" id="email" required>
                                 </div>
 
                                 <!-- CAMPO "TIPO DI LAVORO" -->
                                 <div class="col-12">
                                     <label for="work" class="form-label">Tipo di lavoro</label>
-                                    <select class="form-select fw-semibold" id="work" required="">
+                                    <select class="form-select fw-semibold" id="work" required>
                                         <option value="">Seleziona il tipo di lavoro</option>
                                         <option>Backed Development</option>
                                         <option>Frontend Development</option>
                                         <option>Project Analysis</option>
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Seleziona il tipo di lavoro.
-                                    </div>
                                 </div>
 
                                 <!-- CAMPO NOTE -->
@@ -121,15 +109,14 @@
                                 <!-- CAMPO CODICE PROMOZIONALE -->
                                 <div class="col-12">
                                     <label for="code" class="form-label">Codice Promozionale (opzionale)</label>
-                                    <input type="text" class="form-control" id="code" placeholder="" value=""
-                                        required="">
+                                    <input type="text" class="form-control" id="code" placeholder="" value="">
                                 </div>
 
                             </div>
 
                             <!-- CAMPO PRIVACY -->
                             <div class="form-check py-3">
-                                <input type="checkbox" class="form-check-input" id="privacy">
+                                <input type="checkbox" class="form-check-input" id="privacy" required>
                                 <label class="form-check-label" for="privacy">Accetto la Privacy Policy</label>
                             </div>
 
