@@ -12,7 +12,7 @@ const array_works = [
 
 
 //CARICAMENTO DEGLI INPUTS DI LAVORO NELLA PAGINA HTML
-window.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
     addWorksHtml(array_works);
 })
 
@@ -27,7 +27,7 @@ form_price.addEventListener("submit", function (event) {
     const firstname = document.getElementById("firstName").value;
     const lastname = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
-    const work = document.getElementById("work").value;
+    const work = document.getElementById("container_work").value;
     const textarea = document.getElementById("exampleFormControlTextarea1").value;
     const code = document.getElementById("code").value;
     const privacy = document.getElementById("privacy");
@@ -37,15 +37,15 @@ form_price.addEventListener("submit", function (event) {
     const flag_check_discount = checkDiscount(code); //FLAG CHE INDICA SE IL CONTROLLO DELLO SCONTO E' ANDATO A BUON FINE
 
     if (flag_check && flag_check_discount) {
-        console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
-        const price = operationPrice(work, flag_check_discount);
+        //console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
+        const price = operationPrice(work, array_works, flag_check_discount);
         console.log("PREZZO CON SCONTO ---> " + price);
         addPriceHtml(price);
     }
 
     else if (flag_check) {
-        console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + privacy.checked);
-        const price = operationPrice(work, flag_check_discount);
+        //console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + privacy.checked);
+        const price = operationPrice(work, array_works, flag_check_discount);
         console.log("PREZZO SENZA SCONTO ---> " + price);
         addPriceHtml(price);
     }
@@ -75,7 +75,7 @@ function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
 
 
-//FUNZIONE AGGIUNTA INPUTS LAVORO IN HTML(BONUS)
+//FUNZIONE AGGIUNTA INPUTS LAVORO IN HTML
 function addWorksHtml(array_works) {
 
     let container_work = document.getElementById("container_work");
@@ -118,20 +118,15 @@ function checkDiscount(code) {
 
 
 //FUNZIONE CALCOLO DEL PREVENTIVO
-function operationPrice(work, flag) {
+function operationPrice(work, array_works, flag) {
 
     let price;
 
-    if (work === "Backed Development") {
-        price = 20.50 * 10;
-    }
+    for (let i = 0; i < array_works.length; i++) {
 
-    else if (work === "Frontend Development") {
-        price = 15.30 * 10;
-    }
-
-    else {
-        price = 33.60 * 10;
+        if (work === array_works[i].nome) 
+            price = array_works[i].prezzo * 10;
+    
     }
 
 
