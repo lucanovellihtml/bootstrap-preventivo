@@ -27,12 +27,14 @@ form_price.addEventListener("submit", function (event) {
         console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
         const price = operationPrice(work, flag_check_discount);
         console.log("PREZZO CON SCONTO ---> " + price);
+        addPriceHtml(price);
     }
 
     else if (flag_check) {
         console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + privacy.checked);
         const price = operationPrice(work, flag_check_discount);
         console.log("PREZZO SENZA SCONTO ---> " + price);
+        addPriceHtml(price);
     }
 
     else
@@ -113,3 +115,12 @@ function operationDiscount(price) {
 
 }
 
+
+//FUNZIONE AGGIUNTA DEL PREZZO IN HTML
+function addPriceHtml(price) {
+
+    let container_price = document.getElementById("container_price");
+    let p = document.getElementById("price");
+    p.innerHTML = price + " €";
+
+}
