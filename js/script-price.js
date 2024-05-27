@@ -1,11 +1,15 @@
 "use strict";
 
-//DICHIARAZIONE VARIABILE BOTTONE E FORM
-const button_form = document.getElementById("button_form");
+//DICHIARAZIONE VARIABILE FORM
 const form_price = document.getElementById("form_price");
 
 
-//MAIN
+/*
+ -MODIFICATO IL COMPORTAMENTO DEL FORM AL CLICCARE DEL BOTTONE SUBMIT;
+ -DICHIARAZIONE DELLE VARIABILI INPUT PER ACQUISIRE IL VALORE INSERITO DAL CLIENTE;
+ -VIENE CONTROLLATO L'INPUT CALCOLATO IL PREZZO E INSERITO IL PREZZO NELLA PAGINA HTML;
+ -VIENE CONTROLLATO SE SE IL CLIENTE HA INSERITO ANCHE IL CODICE SCONTO;
+*/
 form_price.addEventListener("submit", function (event) {
 
     event.preventDefault(); //MODIFICO IL COMPORTAMENTO DEL FORM
@@ -44,7 +48,10 @@ form_price.addEventListener("submit", function (event) {
 
 
 
-//FUNZIONE CHECK PARAMETRI FORM
+/*
+  -CONTROLLA, CON LE REGULA EXPRESSION, SE I CAMPI OBBLIGATORI SONO STATI COMPILATI CORRETTAMENTE;
+  -DOPPIO CONTROLLO SE NEL CASO VENISSE MODIFICATO IL COMPORTAMENTO DELL'HTML;
+*/
 function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
     //DEFINIZIONE REGULAR EXPRESSION
@@ -63,7 +70,10 @@ function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
 
 
-//FUNZIONE CHECK CODICE SCONTO
+/*
+  -VIENE CONTROLLATO SE L'INPUT CODE DAL FORM, CORRISPONDE CON I CODICI DI SCONTO
+  -IN CASCO DI ESITO NEGATIVO, VIENE LEVATA LA CLASSE "DISPLAY NONE" AL MESSAGGIO DI ERRORE IN HTML;
+*/
 function checkDiscount(code) {
 
     //DEFINIZIONE REGULAR EXPRESSION
@@ -86,7 +96,11 @@ function checkDiscount(code) {
 
 
 
-//FUNZIONE CALCOLO DEL PREVENTIVO
+/*
+  -VIENE, IN BASE AL LAVORO SELEZIONATO, CALCOLATO IL PREZZO;
+  -SE IL METODO , CHE DETERMINA SE ESISTE LO SCONTO PER IL CLIENTE, HA L'INPUT FLAG SETTATO A TRUE,
+   VIENE APPLICATO LO SCONTO AL PREZZO CON IL METODO APPOSITO;
+*/
 function operationPrice(work, flag) {
 
     let price;
@@ -114,7 +128,9 @@ function operationPrice(work, flag) {
 }
 
 
-//FUNZIONE CALCOLO DEL PREVENTIVO CON SCONTO
+/*
+  -METODO CHE PRENDE IN INPUT IL PREZZO CALCOLATO SENZA SCONTO;
+*/
 function operationDiscount(price) {
 
     return ((price * 25) / 100);
@@ -132,7 +148,10 @@ function addPriceHtml(price) {
 }
 
 
-//FUNZIONE AGGIUNTA ERROR CHECK CODICE SCONTO
+/*
+  -METODO CHE RIMUOVE AL MESSAGGIO DI ERRORE, PER L'INSERIMENTO ERRATO DEL CODICE SCONTO,
+   LA CLASSE "DISPLAY-NONE";
+*/
 function errorMsgDiscount() {
     let error_msg = document.getElementById("error_msg");
     error_msg.classList.remove("d-none");
