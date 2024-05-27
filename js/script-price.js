@@ -21,9 +21,16 @@ form_price.addEventListener("submit", function (event) {
 
 
     const flag_check = checkForm(firstname, lastname, email, work, textarea, code, privacy); //FLAG CHE INDICA SE IL CONTROLLO E' ANDATO A BUON FINE
+    const flag_check_discount = checkDiscount(code);
 
-    if (flag_check)
+    if (flag_check && flag_check_discount) {
         console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
+    }
+    
+    else if (flag_check){
+        console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
+    }
+
     else
         console.log("NON COMPLETI");
 })
@@ -41,6 +48,23 @@ function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
     if (regular_expression.test(firstname) && regular_expression.test(lastname) && regular_expression_email.test(email) && privacy.checked) {
         if (work === "Backed Development" || work === "Frontend Development" || work === "Project Analysis")
+            return true;
+    }
+
+    return false;
+
+}
+
+
+
+//FUNZIONE CHECK CODICE SCONTO
+function checkDiscount(code) {
+
+    //DEFINIZIONE REGULAR EXPRESSION
+    const array_discount = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
+
+    for (let i = 0; i < array_discount.length; i++){
+        if (code === array_discount[i])
             return true;
     }
 
