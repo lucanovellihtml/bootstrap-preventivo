@@ -21,14 +21,18 @@ form_price.addEventListener("submit", function (event) {
 
 
     const flag_check = checkForm(firstname, lastname, email, work, textarea, code, privacy); //FLAG CHE INDICA SE IL CONTROLLO E' ANDATO A BUON FINE
-    const flag_check_discount = checkDiscount(code);
+    const flag_check_discount = checkDiscount(code); //FLAG CHE INDICA SE IL CONTROLLO DELLO SCONTO E' ANDATO A BUON FINE
 
     if (flag_check && flag_check_discount) {
         console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
+        const price = operationPrice(work, flag_check_discount);
+        console.log("PREZZO CON SCONTO ---> " + price);
     }
-    
-    else if (flag_check){
-        console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
+
+    else if (flag_check) {
+        console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + privacy.checked);
+        const price = operationPrice(work, flag_check_discount);
+        console.log("PREZZO SENZA SCONTO ---> " + price);
     }
 
     else
@@ -63,7 +67,7 @@ function checkDiscount(code) {
     //DEFINIZIONE REGULAR EXPRESSION
     const array_discount = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 
-    for (let i = 0; i < array_discount.length; i++){
+    for (let i = 0; i < array_discount.length; i++) {
         if (code === array_discount[i])
             return true;
     }
@@ -71,3 +75,41 @@ function checkDiscount(code) {
     return false;
 
 }
+
+
+
+//FUNZIONE CALCOLO DEL PREVENTIVO
+function operationPrice(work, flag) {
+
+    let price;
+
+    if (work === "Backed Development") {
+        price = 20.50 * 10;
+    }
+
+    else if (work === "Frontend Development") {
+        price = 15.30 * 10;
+    }
+
+    else {
+        price = 33.60 * 10;
+    }
+
+
+    if (flag) {
+        price = operationDiscount(price, flag);
+        return price;
+    }
+
+    return price;
+
+}
+
+
+//FUNZIONE CALCOLO DEL PREVENTIVO CON SCONTO
+function operationDiscount(price) {
+
+    return ((price * 25) / 100);
+
+}
+
