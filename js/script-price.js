@@ -70,8 +70,14 @@ function checkDiscount(code) {
     const array_discount = ["YHDNU32", "JANJC63", "PWKCN25", "SJDPO96", "POCIE24"];
 
     for (let i = 0; i < array_discount.length; i++) {
-        if (code === array_discount[i])
+        if (code === array_discount[i]) {
+            error_msg.classList.add("d-none");
             return true;
+        }
+        else if (code.length > 0 && code !== array_discount[i]) {
+            errorMsgDiscount();
+            return false;
+        }
     }
 
     return false;
@@ -123,4 +129,11 @@ function addPriceHtml(price) {
     let p = document.getElementById("price");
     p.innerHTML = price + " €";
 
+}
+
+
+//FUNZIONE AGGIUNTA ERROR CHECK CODICE SCONTO
+function errorMsgDiscount() {
+    let error_msg = document.getElementById("error_msg");
+    error_msg.classList.remove("d-none");
 }
