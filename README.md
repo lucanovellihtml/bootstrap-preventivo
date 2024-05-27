@@ -18,3 +18,17 @@ Il risultato del calcolo del prezzo finale deve essere visualizzato in “forma 
 -STRUTTURA JS
 1)Dichiarare variabile bottone;
 2)Creazione del metodo che controlla la compilazione dei campi del form;
+3)Creazione del metodo che controlla la compilazione del campo "sconto";
+4)Creazione del metodo per calcolare il preventivo senza sconto;
+5)Creazione del metodo per calcolare il preventivo con sconto;
+6)Creazione del metodo per inserire il prezzo del preventivo nella pagina HTML;
+7)Creazione del metodo per gestire l'errore a video dello sconto non valido;
+
+
+-STRUTTURA JS BONUS
+1)Dichiarazione dell'array con i 3 oggetti jobs;
+2)Aggiungere le due proprietà(nome e prezzo) al singolo oggetto jobs;
+3)Creazione del metodo che  aggiunge i tre jobs nell'HTML;
+4)Creazione del metodo che innesca l'aggiunta dei tre jobs nell'HTML;
+4)Creazione del metodo che controlla la compilazione del campo del lavoro;
+5)Creazione del metodo che calcola il preventivo; 
