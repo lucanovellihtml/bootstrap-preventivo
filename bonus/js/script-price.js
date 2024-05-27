@@ -1,8 +1,21 @@
 "use strict";
 
-//DICHIARAZIONE VARIABILE BOTTONE E FORM
-const button_form = document.getElementById("button_form");
+//DICHIARAZIONE VARIABILE FORM
 const form_price = document.getElementById("form_price");
+
+//DICHIARAZIONE ARRAY OGGETTI LAVORO
+const array_works = [
+    { nome: "Backed Development", prezzo: 20.50 },
+    { nome: "Frontend Development", prezzo: 15.30 },
+    { nome: "Project Analysis", prezzo: 33.60 }
+];
+
+
+//CARICAMENTO DEGLI INPUTS DI LAVORO NELLA PAGINA HTML
+window.addEventListener('load', function () {
+    addWorksHtml(array_works);
+})
+
 
 
 //MAIN
@@ -43,7 +56,6 @@ form_price.addEventListener("submit", function (event) {
 
 
 
-
 //FUNZIONE CHECK PARAMETRI FORM
 function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
@@ -58,6 +70,25 @@ function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
     }
 
     return false;
+
+}
+
+
+
+//FUNZIONE AGGIUNTA INPUTS LAVORO IN HTML(BONUS)
+function addWorksHtml(array_works) {
+
+    let container_work = document.getElementById("container_work");
+
+    for (let i = 0; i < array_works.length; i++) {
+
+        const work = array_works[i];
+        let input_work = document.createElement("option");
+        input_work.innerHTML = work.nome;
+        container_work.append(input_work);
+
+    }
+
 
 }
 
@@ -114,12 +145,14 @@ function operationPrice(work, flag) {
 }
 
 
+
 //FUNZIONE CALCOLO DEL PREVENTIVO CON SCONTO
 function operationDiscount(price) {
 
     return ((price * 25) / 100);
 
 }
+
 
 
 //FUNZIONE AGGIUNTA DEL PREZZO IN HTML
@@ -130,6 +163,7 @@ function addPriceHtml(price) {
     p.innerHTML = price + " €";
 
 }
+
 
 
 //FUNZIONE AGGIUNTA ERROR CHECK CODICE SCONTO
