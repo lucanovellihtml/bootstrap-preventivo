@@ -98,10 +98,10 @@ function operationPrice(work, flag) {
 
     if (flag) {
         price = operationDiscount(price, flag);
-        return price;
+        return price.toFixed(2);
     }
 
-    return price;
+    return price.toFixed(2);
 
 }
 
