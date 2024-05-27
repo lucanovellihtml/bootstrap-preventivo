@@ -11,14 +11,22 @@ const array_works = [
 ];
 
 
-//CARICAMENTO DEGLI INPUTS DI LAVORO NELLA PAGINA HTML
+/*
+  -CARICAMENTO DEGLI INPUTS DI LAVORO NELLA PAGINA HTML QUANDO GLI ELEMENTI DELLA PAGINA
+  SONO STATI CARICATI;
+*/
 document.addEventListener('DOMContentLoaded', function () {
     addWorksHtml(array_works);
 })
 
 
 
-//MAIN
+/*
+ -MODIFICATO IL COMPORTAMENTO DEL FORM AL CLICCARE DEL BOTTONE SUBMIT;
+ -DICHIARAZIONE DELLE VARIABILI INPUT PER ACQUISIRE IL VALORE INSERITO DAL CLIENTE;
+ -VIENE CONTROLLATO L'INPUT CALCOLATO IL PREZZO E INSERITO IL PREZZO NELLA PAGINA HTML;
+ -VIENE CONTROLLATO SE SE IL CLIENTE HA INSERITO ANCHE IL CODICE SCONTO;
+*/
 form_price.addEventListener("submit", function (event) {
 
     event.preventDefault(); //MODIFICO IL COMPORTAMENTO DEL FORM
@@ -39,24 +47,26 @@ form_price.addEventListener("submit", function (event) {
     if (flag_check && flag_check_discount) {
         //console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
         const price = operationPrice(work, array_works, flag_check_discount);
-        console.log("PREZZO CON SCONTO ---> " + price);
+        //console.log("PREZZO CON SCONTO ---> " + price);
         addPriceHtml(price);
     }
 
     else if (flag_check) {
         //console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + privacy.checked);
         const price = operationPrice(work, array_works, flag_check_discount);
-        console.log("PREZZO SENZA SCONTO ---> " + price);
+        //console.log("PREZZO SENZA SCONTO ---> " + price);
         addPriceHtml(price);
     }
 
-    else
-        console.log("NON COMPLETI");
 })
 
 
 
-//FUNZIONE CHECK PARAMETRI FORM
+
+/*
+  -CONTROLLA, CON LE REGULA EXPRESSION, SE I CAMPI OBBLIGATORI SONO STATI COMPILATI CORRETTAMENTE;
+  -DOPPIO CONTROLLO SE NEL CASO VENISSE MODIFICATO IL COMPORTAMENTO DELL'HTML;
+*/
 function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
     //DEFINIZIONE REGULAR EXPRESSION
@@ -75,7 +85,10 @@ function checkForm(firstname, lastname, email, work, textarea, code, privacy) {
 
 
 
-//FUNZIONE AGGIUNTA INPUTS LAVORO IN HTML
+/*
+  -VIENE AGGIUNTO L'INPUT DI LAVORO CICLANDO L'OGGETTO DALL'ARRAY;
+  -VIENE INTERROGATA LA KEY "NOME" DELL'OGGETTO E AGGIUNTO COME INPUT IN HTML;
+*/
 function addWorksHtml(array_works) {
 
     let container_work = document.getElementById("container_work");
@@ -94,7 +107,10 @@ function addWorksHtml(array_works) {
 
 
 
-//FUNZIONE CHECK CODICE SCONTO
+/*
+  -VIENE CONTROLLATO SE L'INPUT CODE DAL FORM, CORRISPONDE CON I CODICI DI SCONTO
+  -IN CASCO DI ESITO NEGATIVO, VIENE LEVATA LA CLASSE "DISPLAY NONE" AL MESSAGGIO DI ERRORE IN HTML;
+*/
 function checkDiscount(code) {
 
     //DEFINIZIONE REGULAR EXPRESSION
@@ -117,16 +133,20 @@ function checkDiscount(code) {
 
 
 
-//FUNZIONE CALCOLO DEL PREVENTIVO
+/*
+  -VIENE, IN BASE AL LAVORO SELEZIONATO, CALCOLATO IL PREZZO;
+  -SE IL METODO , CHE DETERMINA SE ESISTE LO SCONTO PER IL CLIENTE, HA L'INPUT FLAG SETTATO A TRUE.
+   VIENE APPLICATO LO SCONTO AL PREZZO CON IL METODO APPOSITO;
+*/
 function operationPrice(work, array_works, flag) {
 
     let price;
 
     for (let i = 0; i < array_works.length; i++) {
 
-        if (work === array_works[i].nome) 
+        if (work === array_works[i].nome)
             price = array_works[i].prezzo * 10;
-    
+
     }
 
 
@@ -141,7 +161,9 @@ function operationPrice(work, array_works, flag) {
 
 
 
-//FUNZIONE CALCOLO DEL PREVENTIVO CON SCONTO
+/*
+  -METODO CHE PRENDE IN INPUT IL PREZZO CALCOLATO SENZA SCONTO;
+*/
 function operationDiscount(price) {
 
     return ((price * 25) / 100);
@@ -161,7 +183,10 @@ function addPriceHtml(price) {
 
 
 
-//FUNZIONE AGGIUNTA ERROR CHECK CODICE SCONTO
+/*
+  -METODO CHE RIMUOVE AL MESSAGGIO DI ERRORE, PER L'INSERIMENTO ERRATO DEL CODICE SCONTO,
+   LA CLASSE "DISPLAY-NONE";
+*/
 function errorMsgDiscount() {
     let error_msg = document.getElementById("error_msg");
     error_msg.classList.remove("d-none");
