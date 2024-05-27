@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    <header>
+
+        <!-- NAVBAR HEADER -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-md">
+
+                <!-- TITOLO  HEADER -->
+                <a class="navbar-brand">Bool Factory</a>
+
+                <!-- BOTTONE  HEADER -->
+                <button class="navbar-toggler d-onen d-sm-inline d-md-none" type=" button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- MENU' A TENDINA  HEADER -->
+                <div class="collapse navbar-collapse d-none d-md-flex justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Servizi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contatti</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="container-md">
+            <div class="row">
+
+                <div class="col-md-7 col-lg-8">
+
+                    <!-- TITOLO FORM PREVENTIVO -->
+                    <div class="pt-4">
+                        <h2>Richiesta Preventivo</h2>
+                        <p class="fw-semibold">Compila il form per richiedere un preventivo per i nostri servizi di
+                            sviluppo.
+                        </p>
+                    </div>
+
+                    <!-- FORM PREVENTIVO -->
+                    <div class="col">
+                        <form class="needs-validation fw-semibold" id="form_price">
+                            <div class="row g-3">
+
+                                <!-- CAMPO NOME -->
+                                <div class="col-12">
+                                    <label for="firstName" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+
+                                <!-- CAMPO COGNOME -->
+                                <div class="col-12">
+                                    <label for="lastName" class="form-label">Cognome</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+
+                                <!-- CAMPO EMAIL -->
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+
+                                <!-- CAMPO "TIPO DI LAVORO" -->
+                                <div class="col-12">
+                                    <label for="work" class="form-label">Tipo di lavoro</label>
+                                    <select class="form-select fw-semibold" id="work" required>
+                                        <option value="">Seleziona il tipo di lavoro</option>
+                                        <!-- <option>Backed Development</option>
+                                        <option>Frontend Development</option>
+                                        <option>Project Analysis</option> -->
+                                    </select>
+                                </div>
+
+                                <!-- CAMPO NOTE -->
+                                <div>
+                                    <label for="exampleFormControlTextarea1" class="form-label">Textarea con Bootstrap
+                                        5</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+
+                                <!-- CAMPO CODICE PROMOZIONALE -->
+                                <div class="col-12">
+                                    <label for="code" class="form-label">Codice Promozionale (opzionale)</label>
+                                    <input type="text" class="form-control" id="code" placeholder="" value="">
+                                    <div class="text-danger d-none" id="error_msg">
+                                        Inserisci un codice promozionale valido
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- CAMPO PRIVACY -->
+                            <div class="form-check py-3">
+                                <input type="checkbox" class="form-check-input" id="privacy" required>
+                                <label class="form-check-label" for="privacy">Accetto la Privacy Policy</label>
+                            </div>
+
+                            <!-- CAMPO BOTTONE E CALCOLO DEL PREZZO -->
+                            <div class="container-fluid text-center">
+                                <div class="row py-4">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-primary btn-lg" id="button_form" type="submit">Calcola
+                                            preventivo</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3 class="fw-bolder">Prezzo finale</h3>
+                                        <p class="fs-3 fw-bolder" id="price">00,00€</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="col-md-5 col-lg-4 pb-5 pt-4">
+
+                    <!-- BOX INFO -->
+                    <div class="card fw-semibold">
+                        <img src="img/img.png" class="figure-img img-fluid rounded" alt="Immagine">
+                        <div class="card-body">
+                            <h5 class="card-title">I nostri contatti</h5>
+                            <p class="card-text">Se hai bisogno di aiuto puoi contattarci:</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">help@boolfactory.test</li>
+                            <li class="list-group-item">+1122334455</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Help desk</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+
+        <div class="container-fluid text-white text-center bg-dark">
+            <div class="row">
+                <div class="col">
+
+                    <!-- TITOLO FOOTER -->
+                    <p class="pt-4 pb-5" style="margin: 0;">&copy; 2024 - Tutti i diritti riservati</p>
+
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+
+<!-- JS BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+<!-- JS SCRIPT PRICE-->
+<script src="js/script-price.js" type="text/javascript"></script>
+
+</html>
