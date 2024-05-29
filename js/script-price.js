@@ -30,14 +30,14 @@ form_price.addEventListener("submit", function (event) {
     if (flag_check && flag_check_discount) {
         console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + code + "//" + privacy.checked);
         const price = operationPrice(work, flag_check_discount);
-        console.log("PREZZO CON SCONTO ---> " + price);
+        //console.log("PREZZO CON SCONTO ---> " + price);
         addPriceHtml(price);
     }
 
     else if (flag_check) {
         console.log(firstname + "//" + lastname + "//" + email + "//" + work + "//" + textarea + "//" + privacy.checked);
         const price = operationPrice(work, flag_check_discount);
-        console.log("PREZZO SENZA SCONTO ---> " + price);
+        //console.log("PREZZO SENZA SCONTO ---> " + price);
         addPriceHtml(price);
     }
 
@@ -119,7 +119,7 @@ function operationPrice(work, flag) {
 
 
     if (flag) {
-        price = operationDiscount(price, flag);
+        price -= operationDiscount(price, flag);
         return price.toFixed(2);
     }
 

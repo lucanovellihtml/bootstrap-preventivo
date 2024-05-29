@@ -151,7 +151,7 @@ function operationPrice(work, array_works, flag) {
 
 
     if (flag) {
-        price = operationDiscount(price, flag);
+        price -= operationDiscount(price, flag);
         return price.toFixed(2);
     }
 
